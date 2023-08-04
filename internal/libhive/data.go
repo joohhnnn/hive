@@ -54,6 +54,7 @@ type TestResult struct {
 	// suite's TestDetailsLog file ("log").
 	Details    string          `json:"details,omitempty"`
 	LogOffsets *TestLogOffsets `json:"log,omitempty"`
+	JsonRpcResponse string `json:"jsonrpc_response,omitempty"`
 }
 
 type TestLogOffsets struct {
