@@ -17,7 +17,6 @@ import (
 	"github.com/ethereum/hive/hivesim"
 	diff "github.com/yudai/gojsondiff"
 	"github.com/yudai/gojsondiff/formatter"
-	"gopkg.in/inconshreveable/log15.v2"
 )
 
 var (
@@ -139,7 +138,6 @@ func runTest(t *hivesim.T, c *hivesim.Client, data []byte) error {
 				}
 				formatter := formatter.NewAsciiFormatter(got, config)
 				diffString, _ := formatter.Format(d)
-				log15.Info("response differs from expected:", diffString)
 				return fmt.Errorf("response differs from expected:\n%s", diffString)
 			}
 			resp = nil
