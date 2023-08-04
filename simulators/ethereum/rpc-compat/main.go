@@ -82,6 +82,7 @@ func runAllTests(t *hivesim.T, c *hivesim.Client, clientName string) {
 			Name: fmt.Sprintf("%s (%s)", test.Name, clientName),
 			Run: func(t *hivesim.T) {
 				if err := runTest(t, c, test.Data); err != nil {
+					fmt.Sprintf("1111111111111111111111111111111%v", err)
 					t.Fatal(err)
 				}
 			},
