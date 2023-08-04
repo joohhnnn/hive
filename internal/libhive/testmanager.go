@@ -466,7 +466,7 @@ func (manager *TestManager) EndTest(suiteID TestSuiteID, testID TestID, result *
 	// Stop running clients.
 	for _, v := range testCase.ClientInfo {
 		if v.wait != nil {
-			manager.backend.DeleteContainer(v.ID)
+			//manager.backend.DeleteContainer(v.ID)
 			v.wait()
 			v.wait = nil
 		}
@@ -533,9 +533,9 @@ func (manager *TestManager) StopNode(testID TestID, nodeID string) error {
 	}
 	// Stop the container.
 	if nodeInfo.wait != nil {
-		if err := manager.backend.DeleteContainer(nodeInfo.ID); err != nil {
+/* 		if err := manager.backend.DeleteContainer(nodeInfo.ID); err != nil {
 			return fmt.Errorf("unable to stop client: %v", err)
-		}
+		} */
 		nodeInfo.wait()
 		nodeInfo.wait = nil
 	}

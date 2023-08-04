@@ -108,7 +108,7 @@ func (b *ContainerBackend) CreateContainer(ctx context.Context, imageName string
 	// Now upload files.
 	if err := b.uploadFiles(ctx, c.ID, opt.Files); err != nil {
 		logger.Error("container file upload failed", "err", err)
-		b.DeleteContainer(c.ID)
+		//b.DeleteContainer(c.ID)
 		return "", err
 	}
 	logger.Debug("container created")
@@ -128,7 +128,7 @@ func (b *ContainerBackend) StartContainer(ctx context.Context, containerID strin
 	var startTime = time.Now()
 	waiter, err := b.runContainer(ctx, logger, containerID, opt)
 	if err != nil {
-		b.DeleteContainer(containerID)
+		//b.DeleteContainer(containerID)
 		return nil, fmt.Errorf("container did not start: %v", err)
 	}
 
@@ -150,7 +150,7 @@ func (b *ContainerBackend) StartContainer(ctx context.Context, containerID strin
 	container, err := b.client.InspectContainerWithOptions(inspect)
 	if err != nil {
 		waiter.Close()
-		b.DeleteContainer(containerID)
+		//b.DeleteContainer(containerID)
 		info.Wait()
 		info.Wait = nil
 		return info, err
@@ -185,7 +185,7 @@ func (b *ContainerBackend) StartContainer(ctx context.Context, containerID strin
 		checkErr = errors.New("timed out waiting for container startup")
 	}
 	if checkErr != nil {
-		b.DeleteContainer(containerID)
+		//b.DeleteContainer(containerID)
 		info.Wait()
 		info.Wait = nil
 	}

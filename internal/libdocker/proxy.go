@@ -47,7 +47,7 @@ func (cb *ContainerBackend) ServeAPI(ctx context.Context, h http.Handler) (libhi
 	// Now start the container.
 	info, err := cb.StartContainer(ctx, id, opts)
 	if err != nil {
-		cb.DeleteContainer(id)
+		//cb.DeleteContainer(id)
 		return nil, err
 	}
 
@@ -55,7 +55,7 @@ func (cb *ContainerBackend) ServeAPI(ctx context.Context, h http.Handler) (libhi
 	select {
 	case err := <-proxyErrC:
 		if err != nil {
-			cb.DeleteContainer(id)
+			//cb.DeleteContainer(id)
 			return nil, err
 		}
 	}
@@ -107,7 +107,7 @@ func (c *proxyContainer) Close() error {
 		// Stop the container.
 		c.containerStdin.Close()
 		c.containerStdout.Close()
-		c.stopErr = c.cb.DeleteContainer(c.containerID)
+		//c.stopErr = c.cb.DeleteContainer(c.containerID)
 		c.containerWait()
 
 		// Stop the local HTTP receiver.
