@@ -219,7 +219,7 @@ func (r *Runner) run(ctx context.Context, sim string, env SimEnv) (SimResult, er
 	slogger.Debug("started simulator container")
 	defer func() {
 		slogger.Debug("deleting simulator container")
-		r.container.DeleteContainer(sc.ID)
+		//r.container.DeleteContainer(sc.ID)
 	}()
 
 	// Wait for simulator exit.
