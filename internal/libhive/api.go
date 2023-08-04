@@ -160,7 +160,7 @@ func (api *simAPI) endTest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log15.Info("API: test ended", "suite", suiteID, "test", testID, "pass", result.Pass, "detail", result.Details)
+	log15.Info("API: test ended", "suite", suiteID, "test", testID, "pass", result.Pass)
 	serveOK(w)
 }
 
